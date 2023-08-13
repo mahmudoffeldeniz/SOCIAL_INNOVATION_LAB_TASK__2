@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgb(17, 37, 37);
+
+        }
+
+        .divBox {
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .input {
+            background-color: #00a6ff;
+            border: #000000;
+            font-weight: bold;
+            width: 400px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            padding: 7px;
+            color: white;
+        }
+
+        .size {
+            font-family: initial;
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <label class="size" for="input">Enter the size :</label><br><br>
+        <input type="number" title="input" class="input" value="50" onchange="Box()" />
+        <div class="divBox"></div>
+    </center>
+    <script>
+        function Box() {
+            let size = parseInt(document.querySelector(".input").value);
+            let divBox = document.querySelector(".divBox");
+            let Size = size + 10;
+            divBox.style.width = Size + "px";
+            divBox.style.height = Size + "px";
+            if (divBox !== 100) {
+                divBox.style.backgroundColor = 'blue';
+                console.log('blue')
+            } else {
+                divBox.style.backgroundColor = 'yellow';
+                console.log('yellow')
+            }
+        }
+
+    </script>
+</body>
+
+</html>

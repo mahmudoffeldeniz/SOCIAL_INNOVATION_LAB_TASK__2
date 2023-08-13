@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Box</title>
+    <style>
+        body {
+            background-image: url(./div\ img/bg.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function randomColor() {
+            const color = Math.floor(Math.random() * 16666111).toString(16);
+            return "#" + color;
+        }
+
+        function Div() {
+            const BoxColorFull = document.createElement("div");
+            BoxColorFull.style.width = "100px";
+            BoxColorFull.style.height = "100px";
+            BoxColorFull.style.margin = "8px";
+            BoxColorFull.style.backgroundColor = randomColor();
+            document.body.style.display = "flex";
+            document.body.style.flexWrap = "wrap";
+            document.body.appendChild(BoxColorFull);
+        }
+
+        document.addEventListener("click", Div);
+    </script>
+</body>
+
+</html>

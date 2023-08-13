@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate box</title>
+    <style>
+        body {
+            background: silver;
+        }
+
+        #box {
+            background: url("./div\ img/bike.gif") center no-repeat;
+            background-size: auto 200px;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0px;
+            left: -40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        const box = document.getElementById("box");
+        let topPosition = 0;
+        let leftPosition = 0;
+
+        setInterval(function (e) {
+            topPosition += 10;
+            leftPosition += 10;
+            box.style.top = topPosition + "px";
+            box.style.left = leftPosition + "px";
+        }, 1000);
+
+
+        setTimeout(() => {
+            clearInterval(e);
+        }, 20000);
+    </script>
+</body>
+
+</html>

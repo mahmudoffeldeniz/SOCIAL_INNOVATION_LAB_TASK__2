@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carusel box</title>
+    <style>
+        .body {
+
+            display: flex;
+            background: aqua;
+            flex-direction: column;
+            font-family: sans-serif;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #carusel {
+            width: 200px;
+            height: 200px;
+            background-image: url(./div\ img/carx.png);
+            background-size: contain;
+            border-radius: 100%;
+            box-shadow: 0px 0px 20px #000;
+            position: relative;
+            transition: transform 0.5s;
+            display: flex;
+            margin-top: 150px;
+        }
+
+        #startButton,
+        #stopButton {
+            margin-top: 33px;
+        }
+
+        #Text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .banner {
+            height: 70px;
+            width: 30px;
+            background: silver;
+
+        }
+
+        .carusel-banner {
+            width: 100px;
+            height: 30px;
+            border-radius: 6px;
+            background: silver;
+        }
+
+        .btn {
+            background: blue;
+            color: #fff;
+            width: 80px;
+            opacity: .7;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .btn:hover {
+            opacity: 1;
+
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div id="carusel"></div>
+    <div class="banner"></div>
+    <div class="carusel-banner"></div>
+    <div class="btn-carusel">
+        <button class="btn btn-success" id="startButton">Start</button>
+        <button class="btn btn-danger" id="stopButton">Stop</button>
+    </div>
+    <div id="Text"></div>
+
+
+    <script>
+        const carusel = document.getElementById("carusel");
+        const startButton = document.getElementById("startButton");
+        const stopButton = document.getElementById("stopButton");
+        const Text = document.getElementById("Text");
+
+        let interval360;
+        let Stop = true;
+        let count = 3;
+
+        startButton.addEventListener("click", () => {
+            if (Stop) {
+                interval360 = setInterval(() => {
+                    carusel.style.transform = `rotate(${Math.random() * 360}deg)`;
+                }, 2000);
+
+                Stop = false;
+            }
+        });
+
+        stopButton.addEventListener("click", () => {
+            if (!Stop) {
+                clearInterval(interval360);
+                Text.innerText = "Stop";
+
+                const TextId = setInterval(() => {
+                    Text.innerText = count;
+
+                    if (count === 0) {
+                        Text.innerText = "";
+                        Stop = true;
+                        count = 3;
+                        clearInterval(TextId);
+                    } else {
+                        count--;
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

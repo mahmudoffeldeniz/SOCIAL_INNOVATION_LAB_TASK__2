@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        #myCar {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 200px;
+            position: absolute;
+            transform: translate(-20%, -20%);
+            top: 55%;
+            left: 45%;
+        }
+
+        .container {
+            margin: auto;
+            justify-content: center;
+            position: relative;
+            width: 600px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="myCar"></div>
+    </div>
+    <script>
+        const myCar = document.getElementById("myCar");
+
+        let CAR = true;
+
+        setInterval(() => {
+            if (CAR) {
+                myCar.style.backgroundSize = "400px";
+                myCar.style.backgroundImage = "url('./div\ img/car.gif')";
+            } else {
+                myCar.style.backgroundSize = "200px";
+                myCar.style.backgroundImage = "url('./div\ img/car.gif')";
+            }
+
+            CAR = !CAR;
+        }, 1000);
+    </script>
+</body>
+
+</html>

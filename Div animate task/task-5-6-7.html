@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background: #000000d5;
+        }
+
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: #000000;
+            outline: 2px solid #fff;
+            border: 4px double red;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        let box = document.getElementById("box");
+        let maxX = window.innerWidth - box.clientWidth;
+        let maxY = window.innerHeight - box.clientHeight;
+
+        let clicks = 0;
+
+        box.addEventListener("click", () => {
+            clicks++;
+            if (clicks === 1) {
+                box.style.left = `${maxX}px`;
+            } else if (clicks === 2) {
+                box.style.top = `${maxY}px`;
+            } else if (clicks === 3) {
+                box.style.left = 0;
+                box.style.top = `${maxY}px`;
+            } else {
+                box.style.left = 0;
+                box.style.top = 0;
+                clicks = 0;
+            }
+        });
+
+
+
+        let topBox = box.offsetTop;
+        let leftBox = box.offsetLeft;
+
+        document.addEventListener("keydown", (event) => {
+            const keyName = event.key;
+            switch (keyName) {
+                case "ArrowUp":
+                    topBox -= 20;
+                    break;
+                case "ArrowDown":
+                    topBox += 20;
+                    break;
+                case "ArrowLeft":
+                    leftBox -= 20;
+                    break;
+                case "ArrowRight":
+                    leftBox += 20;
+                    break;
+                default:
+                    break;
+            }
+            box.style.top = `${topBox}px`;
+            box.style.left = `${leftBox}px`;
+        });
+
+
+        let lastPosition = localStorage.getItem("boxPosition");
+        if (lastPosition) {
+            const [left, top] = lastPosition.split(",");
+            box.style.left = left;
+            box.style.top = top;
+        }
+        document.addEventListener("keydown", (event) => {
+            const keyName = event.key;
+            switch (keyName) {
+                case "ArrowUp":
+                    topBox -= 10;
+                    break;
+                case "ArrowDown":
+                    topBox += 10;
+                    break;
+                case "ArrowLeft":
+                    leftBox -= 10;
+                    break;
+                case "ArrowRight":
+                    leftBox += 10;
+                    break;
+                default:
+                    break;
+            }
+            box.style.top = `${topBox}px`;
+            box.style.left = `${leftBox}px`;
+            const currentPosition = `${box.style.left},${box.style.top}`;
+            localStorage.setItem("boxPosition", currentPosition);
+        });
+    </script>
+</body>
+
+</html>
